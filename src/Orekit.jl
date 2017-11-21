@@ -1,5 +1,6 @@
 module Orekit
 
+using AstroDynBase
 using JavaCall
 
 const depsfile = joinpath(dirname(@__DIR__), "deps", "deps.jl")
@@ -15,6 +16,9 @@ end
 
 function __init__()
     JavaCall.init()
+end
+
+struct OrekitState <: AbstractState
 end
 
 end # module
