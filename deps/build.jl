@@ -30,7 +30,26 @@ end
 
 if isfile(JARS)
     jar_paths = ["\"$p\"" for p in path.(files(JARS))]
+    if is_windows()
+        jar_paths = replace.(jar_paths, "\\", "/")
+    end
     open("deps.jl", "w") do f
         write(f, "const JARS = [\n$(join(jar_paths, ",\n"))\n]\n")
     end
+end
+
+@RemoteFile DATA "https://www.orekit.org/forge/attachments/download/677/orekit-data.zip" dir="."
+
+if !isfile(DATA)
+    download(DATA)
+end
+
+@static if is_windows() 
+    unzip(file) = `$(joinpath(JULIA_HOME, "7z.exe")) x $file -y`
+else
+    unzip(file) = `unzip -x $file -d .` 
+end
+
+if isfile(DATA)
+    run(unzip(path(DATA)))
 end
