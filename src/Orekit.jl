@@ -1,6 +1,8 @@
 module Orekit
 
+using AstronomicalTime
 using AstroDynBase
+using AstroDynCoordinates
 using JavaCall
 
 const depsfile = joinpath(dirname(@__DIR__), "deps", "deps.jl")
@@ -23,5 +25,6 @@ include("data.jl")
 include("dates.jl")
 include("frames.jl")
 include("vector3d.jl")
+include("orbits.jl")
 
 end # module
