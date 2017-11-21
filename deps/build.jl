@@ -30,6 +30,9 @@ end
 
 if isfile(JARS)
     jar_paths = ["\"$p\"" for p in path.(files(JARS))]
+    if is_windows()
+        jar_paths = replace.(jar_paths, "\\", "\\\\")
+    end
     open("deps.jl", "w") do f
         write(f, "const JARS = [\n$(join(jar_paths, ",\n"))\n]\n")
     end
