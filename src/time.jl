@@ -1,95 +1,54 @@
-const _AbsoluteDate = @jimport org.orekit.time.AbsoluteDate
-const _DateTimeComponents = @jimport org.orekit.time.DateTimeComponents
-const _DateComponents = @jimport org.orekit.time.DateComponents
-const _TimeComponents = @jimport org.orekit.time.TimeComponents
-const _TAIScale = @jimport org.orekit.time.TAIScale
-const _TimeScalesFactory = @jimport org.orekit.time.TimeScalesFactory
-const _TimeScale = @jimport org.orekit.time.TimeScale
+const AbsoluteDate = @jimport org.orekit.time.AbsoluteDate
+const DateTimeComponents = @jimport org.orekit.time.DateTimeComponents
+const DateComponents = @jimport org.orekit.time.DateComponents
+const TimeComponents = @jimport org.orekit.time.TimeComponents
+const TAIScale = @jimport org.orekit.time.TAIScale
+const TimeScalesFactory = @jimport org.orekit.time.TimeScalesFactory
+const TimeScale = @jimport org.orekit.time.TimeScale
 
-struct AbsoluteDate
-    obj::_AbsoluteDate
-end
-
-struct DateTimeComponents
-    obj::_DateTimeComponents
-end
-
-struct DateComponents
-    obj::_DateComponents
-end
-
-struct TimeComponents
-    obj::_TimeComponents
-end
-
-struct TimeScale{T}
-    obj::T
-end
-
-function TimeScale(::AstroTime.InternationalAtomicTime)
-    obj = jcall(_TimeScalesFactory, "getTAI", _TAIScale, ())
-    return TimeScale(obj)
-end
+TimeScale(::AstroTime.InternationalAtomicTime) = jcall(TimeScalesFactory, "getTAI", TAIScale, ())
 
 function AbsoluteDate(year, month, day, hour, minute, second, scale)
-    _scale = TimeScale(scale)
-    obj = _AbsoluteDate(
-        (jint, jint, jint, jint, jint, jdouble, _TimeScale),
-        year, month, day, hour, minute, second, _scale.obj,
+    return AbsoluteDate(
+        (jint, jint, jint, jint, jint, jdouble, TimeScale),
+        year, month, day, hour, minute, second, TimeScale(scale),
     )
-    return AbsoluteDate(obj)
 end
 
-function AbsoluteDate(str::String, scale)
-    obj = _AbsoluteDate(
-        (JString, _TimeScale),
-        str, scale,
-    )
-    return AbsoluteDate(obj)
-end
+AbsoluteDate(str::String, scale) = AbsoluteDate((JString, TimeScale), str, TimeScale(scale))
 
 function AbsoluteDate(dt::Dates.DateTime, scale)
-    _scale = TimeScale(scale)
     year = Dates.year(dt)
     month = Dates.month(dt)
     day = Dates.day(dt)
     hour = Dates.hour(dt)
     minute = Dates.minute(dt)
     second = Dates.millisecond(dt) * 1e-3 + Dates.second(dt)
-    obj = _AbsoluteDate(
-        (jint, jint, jint, jint, jint, jdouble, _TimeScale),
-        year, month, day, hour, minute, second, _scale.obj,
+    return AbsoluteDate(
+        (jint, jint, jint, jint, jint, jdouble, TimeScale),
+        year, month, day, hour, minute, second, TimeScale(scale),
     )
-    return AbsoluteDate(obj)
 end
 
 function DateTimeComponents(dt, scale)
-    _scale = TimeScale(scale)
-    obj = jcall(dt.obj, "getComponents", _DateTimeComponents, (_TimeScale,), _scale.obj)
-    return DateTimeComponents(obj)
+    return jcall(dt, "getComponents", DateTimeComponents, (TimeScale,), TimeScale(scale))
 end
 
-function DateComponents(dt::DateTimeComponents)
-    obj = jcall(dt.obj, "getDate", _DateComponents, ())
-    return DateComponents(obj)
-end
+DateComponents(dt::DateTimeComponents) = jcall(dt, "getDate", DateComponents, ())
 
 function Dates.Date(date::DateComponents)
-    year = jcall(date.obj, "getYear", jint, ())
-    month = jcall(date.obj, "getMonth", jint, ())
-    day = jcall(date.obj, "getDay", jint, ())
+    year = jcall(date, "getYear", jint, ())
+    month = jcall(date, "getMonth", jint, ())
+    day = jcall(date, "getDay", jint, ())
     return Dates.Date(year, month, day)
 end
 
-function TimeComponents(dt::DateTimeComponents)
-    obj = jcall(dt.obj, "getTime", _TimeComponents, ())
-    return TimeComponents(obj)
-end
+TimeComponents(dt::DateTimeComponents) = jcall(dt, "getTime", TimeComponents, ())
 
 function Dates.Time(time::TimeComponents)
-    hour = jcall(time.obj, "getHour", jint, ())
-    minute = jcall(time.obj, "getMinute", jint, ())
-    seconds = jcall(time.obj, "getSecond", jdouble, ())
+    hour = jcall(time, "getHour", jint, ())
+    minute = jcall(time, "getMinute", jint, ())
+    seconds = jcall(time, "getSecond", jdouble, ())
     second, fraction = divrem(seconds, 1.0)
     millis = round(Int, fraction * 1e3)
     #FIXME: Nanoseconds?
