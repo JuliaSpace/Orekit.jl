@@ -1,0 +1,11 @@
+name = "Orekit"
+uuid = "18617f63-0264-4c66-83ad-600754703f99"
+authors = ["Helge Eichhorn <git@helgeeichhorn.de>"]
+version = "0.1.0"
+
+[deps]
+JavaCall = "494afd89-becb-516b-aafa-70d2670c0337"
+
+[compat]
+julia = "1.5"
+JavaCall = "0.8"
