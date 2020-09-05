@@ -1,26 +1,21 @@
 module Orekit
 
-# using AstronomicalTime
-# using AstroDynBase
-# using AstroDynCoordinates
+import Dates
 using Pkg.Artifacts
+
+import AstroTime
 using JavaCall
+using Reexport
+
+@reexport using AstroTime.TimeScales
+
+export AbsoluteDate, DateTimeComponents, TimeScale
 
 function init()
-    jars = readdir(joinpath(artifact"jars", "orekit-artifacts-10.2"))
-    foreach(JavaCall.addClassPath, jars)
-
+    JavaCall.addClassPath(joinpath(artifact"jars", "orekit-artifacts-10.2", "*.jar"))
     JavaCall.init()
-    # load_data()
 end
 
-# struct OrekitState <: AbstractState
-# end
-#
-# include("data.jl")
-# include("dates.jl")
-# include("frames.jl")
-# include("vector3d.jl")
-# include("orbits.jl")
+include("time.jl")
 
 end # module

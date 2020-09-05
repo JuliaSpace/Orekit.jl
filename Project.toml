@@ -4,8 +4,11 @@ authors = ["Helge Eichhorn <git@helgeeichhorn.de>"]
 version = "0.1.0"
 
 [deps]
+AstroTime = "c61b5328-d09d-5e37-a9a8-0eb41c39009c"
+Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
 JavaCall = "494afd89-becb-516b-aafa-70d2670c0337"
 Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
+Reexport = "189a3867-3050-52da-a836-e630ba90ab69"
 
 [compat]
 JavaCall = "0.7"
