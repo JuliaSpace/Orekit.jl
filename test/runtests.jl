@@ -7,14 +7,12 @@ Orekit.init()
 
 @testset "Orekit" begin
     @testset "Time" begin
-        ep = AbsoluteDate(2020, 1, 1, 0, 0, 12.5, TAI)
-        dt = Dates.DateTime(ep, TAI)
-        @test Dates.year(dt) == 2020
-        @test Dates.month(dt) == 1
-        @test Dates.day(dt) == 1
-        @test Dates.hour(dt) == 0
-        @test Dates.minute(dt) == 0
-        @test Dates.second(dt) == 12
-        @test Dates.millisecond(dt) == 500
+        dt = Dates.DateTime(2020, 1, 1, 0, 0, 12, 500)
+        ep1 = AbsoluteDate(2020, 1, 1, 0, 0, 12.5, TAI)
+        ep2 = AbsoluteDate(dt, TAI)
+        dt1 = Dates.DateTime(ep1, TAI)
+        dt2 = Dates.DateTime(ep2, TAI)
+        @test dt == dt1
+        @test dt == dt2
     end
 end
