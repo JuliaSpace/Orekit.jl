@@ -1,0 +1,6 @@
+[jars]
+git-tree-sha1 = "33a0dbd95d78446be30e11b15430083a3f1601af"
+
+    [[jars.download]]
+    sha256 = "4e4ef05593cdd9eefb59d83a2c6bff4bca6e56b0201a008482f32dbcb3522e4d"
+    url = "https://github.com/JuliaSpace/orekit-artifacts/archive/10.2.tar.gz"
