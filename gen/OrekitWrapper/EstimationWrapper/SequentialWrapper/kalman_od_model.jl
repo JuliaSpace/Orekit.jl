@@ -1,13 +1,13 @@
-function get_estimated_propagators(obj::KalmanODModel)
-    return jcall(obj, "getEstimatedPropagators", Vector{AbstractIntegratedPropagator}, ())
+function finalize_estimation(obj::KalmanODModel, arg0::ObservedMeasurement, arg1::ProcessEstimate)
+    return jcall(obj, "finalizeEstimation", void, (ObservedMeasurement, ProcessEstimate), arg0, arg1)
 end
 
 function get_estimate(obj::KalmanODModel)
     return jcall(obj, "getEstimate", ProcessEstimate, ())
 end
 
-function finalize_estimation(obj::KalmanODModel, arg0::ObservedMeasurement, arg1::ProcessEstimate)
-    return jcall(obj, "finalizeEstimation", void, (ObservedMeasurement, ProcessEstimate), arg0, arg1)
+function get_estimated_propagators(obj::KalmanODModel)
+    return jcall(obj, "getEstimatedPropagators", Vector{AbstractIntegratedPropagator}, ())
 end
 
 function get_evolution(obj::NonLinearProcess, arg0::jdouble, arg1::RealVector, arg2::Measurement)

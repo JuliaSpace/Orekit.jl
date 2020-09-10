@@ -6,6 +6,14 @@ function SolidTides(arg0::Frame, arg1::jdouble, arg2::jdouble, arg3::TideSystem,
     return SolidTides((Frame, jdouble, jdouble, TideSystem, jboolean, jdouble, jint, IERSConventions, UT1Scale, Vector{CelestialBody}), arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
 end
 
+function acceleration(obj::SolidTides, arg0::FieldSpacecraftState, arg1::Vector{RealFieldElement})
+    return jcall(obj, "acceleration", FieldVector3D, (FieldSpacecraftState, Vector{RealFieldElement}), arg0, arg1)
+end
+
+function acceleration(obj::SolidTides, arg0::SpacecraftState, arg1::Vector{jdouble})
+    return jcall(obj, "acceleration", Vector3D, (SpacecraftState, Vector{jdouble}), arg0, arg1)
+end
+
 function depends_on_position_only(obj::SolidTides)
     return jcall(obj, "dependsOnPositionOnly", jboolean, ())
 end
@@ -20,13 +28,5 @@ end
 
 function get_parameters_drivers(obj::SolidTides)
     return jcall(obj, "getParametersDrivers", Vector{ParameterDriver}, ())
-end
-
-function acceleration(obj::SolidTides, arg0::SpacecraftState, arg1::Vector{jdouble})
-    return jcall(obj, "acceleration", Vector3D, (SpacecraftState, Vector{jdouble}), arg0, arg1)
-end
-
-function acceleration(obj::SolidTides, arg0::FieldSpacecraftState, arg1::Vector{RealFieldElement})
-    return jcall(obj, "acceleration", FieldVector3D, (FieldSpacecraftState, Vector{RealFieldElement}), arg0, arg1)
 end
 

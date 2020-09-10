@@ -1,9 +1,9 @@
-function IterativeLinearSolver(arg0::jint)
-    return IterativeLinearSolver((jint,), arg0)
-end
-
 function IterativeLinearSolver(arg0::IterationManager)
     return IterativeLinearSolver((IterationManager,), arg0)
+end
+
+function IterativeLinearSolver(arg0::jint)
+    return IterativeLinearSolver((jint,), arg0)
 end
 
 function solve(obj::IterativeLinearSolver, arg0::RealLinearOperator, arg1::RealVector)

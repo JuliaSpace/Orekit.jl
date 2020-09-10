@@ -1,5 +1,5 @@
-function MersenneTwister(arg0::jlong)
-    return MersenneTwister((jlong,), arg0)
+function MersenneTwister()
+    return MersenneTwister(())
 end
 
 function MersenneTwister(arg0::Vector{jint})
@@ -10,8 +10,12 @@ function MersenneTwister(arg0::jint)
     return MersenneTwister((jint,), arg0)
 end
 
-function MersenneTwister()
-    return MersenneTwister(())
+function MersenneTwister(arg0::jlong)
+    return MersenneTwister((jlong,), arg0)
+end
+
+function next_int(obj::MersenneTwister)
+    return jcall(obj, "nextInt", jint, ())
 end
 
 function set_seed(obj::MersenneTwister, arg0::Vector{jint})
@@ -20,9 +24,5 @@ end
 
 function set_seed(obj::MersenneTwister, arg0::jint)
     return jcall(obj, "setSeed", void, (jint,), arg0)
-end
-
-function next_int(obj::MersenneTwister)
-    return jcall(obj, "nextInt", jint, ())
 end
 

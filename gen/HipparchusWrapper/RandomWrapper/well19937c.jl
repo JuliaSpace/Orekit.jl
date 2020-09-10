@@ -1,5 +1,5 @@
-function Well19937c(arg0::jlong)
-    return Well19937c((jlong,), arg0)
+function Well19937c()
+    return Well19937c(())
 end
 
 function Well19937c(arg0::Vector{jint})
@@ -10,8 +10,8 @@ function Well19937c(arg0::jint)
     return Well19937c((jint,), arg0)
 end
 
-function Well19937c()
-    return Well19937c(())
+function Well19937c(arg0::jlong)
+    return Well19937c((jlong,), arg0)
 end
 
 function next_int(obj::Well19937c)

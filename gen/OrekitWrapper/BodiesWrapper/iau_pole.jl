@@ -1,9 +1,9 @@
-function get_node(obj::IAUPole, arg0::FieldAbsoluteDate)
-    return jcall(obj, "getNode", FieldVector3D, (FieldAbsoluteDate,), arg0)
-end
-
 function get_node(obj::IAUPole, arg0::AbsoluteDate)
     return jcall(obj, "getNode", Vector3D, (AbsoluteDate,), arg0)
+end
+
+function get_node(obj::IAUPole, arg0::FieldAbsoluteDate)
+    return jcall(obj, "getNode", FieldVector3D, (FieldAbsoluteDate,), arg0)
 end
 
 function get_pole(obj::IAUPole, arg0::AbsoluteDate)

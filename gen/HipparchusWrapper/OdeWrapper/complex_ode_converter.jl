@@ -10,11 +10,11 @@ function convert_secondary_equations(obj::ComplexODEConverter, arg0::ComplexSeco
     return jcall(obj, "convertSecondaryEquations", SecondaryODE, (ComplexSecondaryODE,), arg0)
 end
 
-function convert_state(obj::ComplexODEConverter, arg0::ODEStateAndDerivative)
-    return jcall(obj, "convertState", ComplexODEStateAndDerivative, (ODEStateAndDerivative,), arg0)
-end
-
 function convert_state(obj::ComplexODEConverter, arg0::ComplexODEState)
     return jcall(obj, "convertState", ODEState, (ComplexODEState,), arg0)
+end
+
+function convert_state(obj::ComplexODEConverter, arg0::ODEStateAndDerivative)
+    return jcall(obj, "convertState", ComplexODEStateAndDerivative, (ODEStateAndDerivative,), arg0)
 end
 

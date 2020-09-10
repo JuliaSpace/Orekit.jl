@@ -6,12 +6,12 @@ function get_a(obj::ClassicalRungeKuttaFieldIntegrator)
     return jcall(obj, "getA", Vector{Vector{RealFieldElement}}, ())
 end
 
-function get_c(obj::ClassicalRungeKuttaFieldIntegrator)
-    return jcall(obj, "getC", Vector{RealFieldElement}, ())
-end
-
 function get_b(obj::ClassicalRungeKuttaFieldIntegrator)
     return jcall(obj, "getB", Vector{RealFieldElement}, ())
+end
+
+function get_c(obj::ClassicalRungeKuttaFieldIntegrator)
+    return jcall(obj, "getC", Vector{RealFieldElement}, ())
 end
 
 function integrate(obj::RungeKuttaFieldIntegrator, arg0::FieldExpandableODE, arg1::FieldODEState, arg2::RealFieldElement)

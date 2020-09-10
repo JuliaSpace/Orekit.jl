@@ -6,16 +6,16 @@ function PointVectorValuePair(arg0::Vector{jdouble}, arg1::Vector{jdouble}, arg2
     return PointVectorValuePair((Vector{jdouble}, Vector{jdouble}, jboolean), arg0, arg1, arg2)
 end
 
-function get_value(obj::PointVectorValuePair)
-    return jcall(obj, "getValue", Vector{jdouble}, ())
-end
-
 function get_point(obj::PointVectorValuePair)
     return jcall(obj, "getPoint", Vector{jdouble}, ())
 end
 
 function get_point_ref(obj::PointVectorValuePair)
     return jcall(obj, "getPointRef", Vector{jdouble}, ())
+end
+
+function get_value(obj::PointVectorValuePair)
+    return jcall(obj, "getValue", Vector{jdouble}, ())
 end
 
 function get_value_ref(obj::PointVectorValuePair)

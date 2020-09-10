@@ -1,9 +1,9 @@
-function get_dimension(obj::MultivariateRealDistribution)
-    return jcall(obj, "getDimension", jint, ())
-end
-
 function density(obj::MultivariateRealDistribution, arg0::Vector{jdouble})
     return jcall(obj, "density", jdouble, (Vector{jdouble},), arg0)
+end
+
+function get_dimension(obj::MultivariateRealDistribution)
+    return jcall(obj, "getDimension", jint, ())
 end
 
 function reseed_random_generator(obj::MultivariateRealDistribution, arg0::jlong)

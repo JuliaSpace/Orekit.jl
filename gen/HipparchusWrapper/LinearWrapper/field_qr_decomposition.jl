@@ -14,15 +14,15 @@ function get_q(obj::FieldQRDecomposition)
     return jcall(obj, "getQ", FieldMatrix, ())
 end
 
-function get_solver(obj::FieldQRDecomposition)
-    return jcall(obj, "getSolver", FieldDecompositionSolver, ())
+function get_qt(obj::FieldQRDecomposition)
+    return jcall(obj, "getQT", FieldMatrix, ())
 end
 
 function get_r(obj::FieldQRDecomposition)
     return jcall(obj, "getR", FieldMatrix, ())
 end
 
-function get_qt(obj::FieldQRDecomposition)
-    return jcall(obj, "getQT", FieldMatrix, ())
+function get_solver(obj::FieldQRDecomposition)
+    return jcall(obj, "getSolver", FieldDecompositionSolver, ())
 end
 

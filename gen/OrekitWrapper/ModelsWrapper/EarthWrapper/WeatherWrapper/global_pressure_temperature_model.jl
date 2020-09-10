@@ -6,12 +6,12 @@ function GlobalPressureTemperatureModel(arg0::jdouble, arg1::jdouble, arg2::Fram
     return GlobalPressureTemperatureModel((jdouble, jdouble, Frame, DataContext), arg0, arg1, arg2, arg3)
 end
 
-function get_temperature(obj::GlobalPressureTemperatureModel)
-    return jcall(obj, "getTemperature", jdouble, ())
-end
-
 function get_pressure(obj::GlobalPressureTemperatureModel)
     return jcall(obj, "getPressure", jdouble, ())
+end
+
+function get_temperature(obj::GlobalPressureTemperatureModel)
+    return jcall(obj, "getTemperature", jdouble, ())
 end
 
 function weather_parameters(obj::GlobalPressureTemperatureModel, arg0::jdouble, arg1::AbsoluteDate)

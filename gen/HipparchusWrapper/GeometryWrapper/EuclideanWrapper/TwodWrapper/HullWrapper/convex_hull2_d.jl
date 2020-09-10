@@ -6,11 +6,11 @@ function create_region(obj::ConvexHull2D)
     return jcall(obj, "createRegion", Region, ())
 end
 
-function get_vertices(obj::ConvexHull2D)
-    return jcall(obj, "getVertices", Vector{Vector2D}, ())
-end
-
 function get_line_segments(obj::ConvexHull2D)
     return jcall(obj, "getLineSegments", Vector{Segment}, ())
+end
+
+function get_vertices(obj::ConvexHull2D)
+    return jcall(obj, "getVertices", Vector{Vector2D}, ())
 end
 

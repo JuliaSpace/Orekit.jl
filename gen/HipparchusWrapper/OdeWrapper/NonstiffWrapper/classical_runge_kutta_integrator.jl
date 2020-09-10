@@ -6,12 +6,12 @@ function get_a(obj::ClassicalRungeKuttaIntegrator)
     return jcall(obj, "getA", Vector{Vector{jdouble}}, ())
 end
 
-function get_c(obj::ClassicalRungeKuttaIntegrator)
-    return jcall(obj, "getC", Vector{jdouble}, ())
-end
-
 function get_b(obj::ClassicalRungeKuttaIntegrator)
     return jcall(obj, "getB", Vector{jdouble}, ())
+end
+
+function get_c(obj::ClassicalRungeKuttaIntegrator)
+    return jcall(obj, "getC", Vector{jdouble}, ())
 end
 
 function integrate(obj::RungeKuttaIntegrator, arg0::ExpandableODE, arg1::ODEState, arg2::jdouble)

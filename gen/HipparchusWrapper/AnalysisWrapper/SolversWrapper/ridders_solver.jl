@@ -1,12 +1,12 @@
-function RiddersSolver(arg0::jdouble, arg1::jdouble)
-    return RiddersSolver((jdouble, jdouble), arg0, arg1)
+function RiddersSolver()
+    return RiddersSolver(())
 end
 
 function RiddersSolver(arg0::jdouble)
     return RiddersSolver((jdouble,), arg0)
 end
 
-function RiddersSolver()
-    return RiddersSolver(())
+function RiddersSolver(arg0::jdouble, arg1::jdouble)
+    return RiddersSolver((jdouble, jdouble), arg0, arg1)
 end
 

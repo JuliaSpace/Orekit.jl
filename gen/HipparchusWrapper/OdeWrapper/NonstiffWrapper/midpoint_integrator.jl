@@ -6,11 +6,11 @@ function get_a(obj::MidpointIntegrator)
     return jcall(obj, "getA", Vector{Vector{jdouble}}, ())
 end
 
-function get_c(obj::MidpointIntegrator)
-    return jcall(obj, "getC", Vector{jdouble}, ())
-end
-
 function get_b(obj::MidpointIntegrator)
     return jcall(obj, "getB", Vector{jdouble}, ())
+end
+
+function get_c(obj::MidpointIntegrator)
+    return jcall(obj, "getC", Vector{jdouble}, ())
 end
 

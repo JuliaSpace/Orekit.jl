@@ -14,6 +14,10 @@ function TimeStampedAngularCoordinates(arg0::AbsoluteDate, arg1::Rotation, arg2:
     return TimeStampedAngularCoordinates((AbsoluteDate, Rotation, Vector3D, Vector3D), arg0, arg1, arg2, arg3)
 end
 
+function add_offset(obj::TimeStampedAngularCoordinates, arg0::AngularCoordinates)
+    return jcall(obj, "addOffset", TimeStampedAngularCoordinates, (AngularCoordinates,), arg0)
+end
+
 function get_date(obj::TimeStampedAngularCoordinates)
     return jcall(obj, "getDate", AbsoluteDate, ())
 end
@@ -26,15 +30,11 @@ function revert(obj::TimeStampedAngularCoordinates)
     return jcall(obj, "revert", TimeStampedAngularCoordinates, ())
 end
 
-function add_offset(obj::TimeStampedAngularCoordinates, arg0::AngularCoordinates)
-    return jcall(obj, "addOffset", TimeStampedAngularCoordinates, (AngularCoordinates,), arg0)
+function shifted_by(obj::TimeStampedAngularCoordinates, arg0::jdouble)
+    return jcall(obj, "shiftedBy", TimeStampedAngularCoordinates, (jdouble,), arg0)
 end
 
 function subtract_offset(obj::TimeStampedAngularCoordinates, arg0::AngularCoordinates)
     return jcall(obj, "subtractOffset", TimeStampedAngularCoordinates, (AngularCoordinates,), arg0)
-end
-
-function shifted_by(obj::TimeStampedAngularCoordinates, arg0::jdouble)
-    return jcall(obj, "shiftedBy", TimeStampedAngularCoordinates, (jdouble,), arg0)
 end
 

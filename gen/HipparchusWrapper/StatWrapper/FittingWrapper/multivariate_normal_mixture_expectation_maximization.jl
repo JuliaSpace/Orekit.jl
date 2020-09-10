@@ -14,11 +14,11 @@ function fit(obj::MultivariateNormalMixtureExpectationMaximization, arg0::Mixtur
     return jcall(obj, "fit", void, (MixtureMultivariateNormalDistribution, jint, jdouble), arg0, arg1, arg2)
 end
 
-function get_log_likelihood(obj::MultivariateNormalMixtureExpectationMaximization)
-    return jcall(obj, "getLogLikelihood", jdouble, ())
-end
-
 function get_fitted_model(obj::MultivariateNormalMixtureExpectationMaximization)
     return jcall(obj, "getFittedModel", MixtureMultivariateNormalDistribution, ())
+end
+
+function get_log_likelihood(obj::MultivariateNormalMixtureExpectationMaximization)
+    return jcall(obj, "getLogLikelihood", jdouble, ())
 end
 

@@ -1,3 +1,11 @@
+function TLE(arg0::JString, arg1::JString)
+    return TLE((JString, JString), arg0, arg1)
+end
+
+function TLE(arg0::JString, arg1::JString, arg2::TimeScale)
+    return TLE((JString, JString, TimeScale), arg0, arg1, arg2)
+end
+
 function TLE(arg0::jint, arg1::jchar, arg10::jdouble, arg11::jdouble, arg12::jdouble, arg13::jdouble, arg14::jdouble, arg15::jdouble, arg16::jint, arg17::jdouble, arg18::TimeScale, arg2::jint, arg3::jint, arg4::JString, arg5::jint, arg6::jint, arg7::AbsoluteDate, arg8::jdouble, arg9::jdouble)
     return TLE((jint, jchar, jdouble, jdouble, jdouble, jdouble, jdouble, jdouble, jint, jdouble, TimeScale, jint, jint, JString, jint, jint, AbsoluteDate, jdouble, jdouble), arg0, arg1, arg10, arg11, arg12, arg13, arg14, arg15, arg16, arg17, arg18, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
 end
@@ -6,44 +14,36 @@ function TLE(arg0::jint, arg1::jchar, arg10::jdouble, arg11::jdouble, arg12::jdo
     return TLE((jint, jchar, jdouble, jdouble, jdouble, jdouble, jdouble, jdouble, jint, jdouble, jint, jint, JString, jint, jint, AbsoluteDate, jdouble, jdouble), arg0, arg1, arg10, arg11, arg12, arg13, arg14, arg15, arg16, arg17, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
 end
 
-function TLE(arg0::JString, arg1::JString, arg2::TimeScale)
-    return TLE((JString, JString, TimeScale), arg0, arg1, arg2)
-end
-
-function TLE(arg0::JString, arg1::JString)
-    return TLE((JString, JString), arg0, arg1)
-end
-
 function equals(obj::TLE, arg0::Object)
     return jcall(obj, "equals", jboolean, (Object,), arg0)
 end
 
-function to_string(obj::TLE)
-    return jcall(obj, "toString", JString, ())
-end
-
-function hash_code(obj::TLE)
-    return jcall(obj, "hashCode", jint, ())
-end
-
-function get_date(obj::TLE)
-    return jcall(obj, "getDate", AbsoluteDate, ())
-end
-
-function get_i(obj::TLE)
-    return jcall(obj, "getI", jdouble, ())
-end
-
-function get_satellite_number(obj::TLE)
-    return jcall(obj, "getSatelliteNumber", jint, ())
+function get_b_star(obj::TLE)
+    return jcall(obj, "getBStar", jdouble, ())
 end
 
 function get_classification(obj::TLE)
     return jcall(obj, "getClassification", jchar, ())
 end
 
-function get_launch_year(obj::TLE)
-    return jcall(obj, "getLaunchYear", jint, ())
+function get_date(obj::TLE)
+    return jcall(obj, "getDate", AbsoluteDate, ())
+end
+
+function get_e(obj::TLE)
+    return jcall(obj, "getE", jdouble, ())
+end
+
+function get_element_number(obj::TLE)
+    return jcall(obj, "getElementNumber", jint, ())
+end
+
+function get_ephemeris_type(obj::TLE)
+    return jcall(obj, "getEphemerisType", jint, ())
+end
+
+function get_i(obj::TLE)
+    return jcall(obj, "getI", jdouble, ())
 end
 
 function get_launch_number(obj::TLE)
@@ -54,12 +54,8 @@ function get_launch_piece(obj::TLE)
     return jcall(obj, "getLaunchPiece", JString, ())
 end
 
-function get_element_number(obj::TLE)
-    return jcall(obj, "getElementNumber", jint, ())
-end
-
-function get_revolution_number_at_epoch(obj::TLE)
-    return jcall(obj, "getRevolutionNumberAtEpoch", jint, ())
+function get_launch_year(obj::TLE)
+    return jcall(obj, "getLaunchYear", jint, ())
 end
 
 function get_line1(obj::TLE)
@@ -70,8 +66,12 @@ function get_line2(obj::TLE)
     return jcall(obj, "getLine2", JString, ())
 end
 
-function get_ephemeris_type(obj::TLE)
-    return jcall(obj, "getEphemerisType", jint, ())
+function get_mean_anomaly(obj::TLE)
+    return jcall(obj, "getMeanAnomaly", jdouble, ())
+end
+
+function get_mean_motion(obj::TLE)
+    return jcall(obj, "getMeanMotion", jdouble, ())
 end
 
 function get_mean_motion_first_derivative(obj::TLE)
@@ -82,31 +82,31 @@ function get_mean_motion_second_derivative(obj::TLE)
     return jcall(obj, "getMeanMotionSecondDerivative", jdouble, ())
 end
 
+function get_perigee_argument(obj::TLE)
+    return jcall(obj, "getPerigeeArgument", jdouble, ())
+end
+
 function get_raan(obj::TLE)
     return jcall(obj, "getRaan", jdouble, ())
 end
 
-function get_b_star(obj::TLE)
-    return jcall(obj, "getBStar", jdouble, ())
+function get_revolution_number_at_epoch(obj::TLE)
+    return jcall(obj, "getRevolutionNumberAtEpoch", jint, ())
+end
+
+function get_satellite_number(obj::TLE)
+    return jcall(obj, "getSatelliteNumber", jint, ())
+end
+
+function hash_code(obj::TLE)
+    return jcall(obj, "hashCode", jint, ())
 end
 
 function is_format_ok(::Type{TLE}, arg0::JString, arg1::JString)
     return jcall(TLE, "isFormatOK", jboolean, (JString, JString), arg0, arg1)
 end
 
-function get_perigee_argument(obj::TLE)
-    return jcall(obj, "getPerigeeArgument", jdouble, ())
-end
-
-function get_mean_anomaly(obj::TLE)
-    return jcall(obj, "getMeanAnomaly", jdouble, ())
-end
-
-function get_mean_motion(obj::TLE)
-    return jcall(obj, "getMeanMotion", jdouble, ())
-end
-
-function get_e(obj::TLE)
-    return jcall(obj, "getE", jdouble, ())
+function to_string(obj::TLE)
+    return jcall(obj, "toString", JString, ())
 end
 

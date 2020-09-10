@@ -1,9 +1,9 @@
-function MultivariateNormalDistribution(arg0::Vector{jdouble}, arg1::Vector{Vector{jdouble}})
-    return MultivariateNormalDistribution((Vector{jdouble}, Vector{Vector{jdouble}}), arg0, arg1)
-end
-
 function MultivariateNormalDistribution(arg0::RandomGenerator, arg1::Vector{jdouble}, arg2::Vector{Vector{jdouble}})
     return MultivariateNormalDistribution((RandomGenerator, Vector{jdouble}, Vector{Vector{jdouble}}), arg0, arg1, arg2)
+end
+
+function MultivariateNormalDistribution(arg0::Vector{jdouble}, arg1::Vector{Vector{jdouble}})
+    return MultivariateNormalDistribution((Vector{jdouble}, Vector{Vector{jdouble}}), arg0, arg1)
 end
 
 function density(obj::MultivariateNormalDistribution, arg0::Vector{jdouble})

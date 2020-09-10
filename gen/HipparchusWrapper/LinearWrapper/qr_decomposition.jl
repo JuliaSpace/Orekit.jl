@@ -14,15 +14,15 @@ function get_q(obj::QRDecomposition)
     return jcall(obj, "getQ", RealMatrix, ())
 end
 
-function get_solver(obj::QRDecomposition)
-    return jcall(obj, "getSolver", DecompositionSolver, ())
+function get_qt(obj::QRDecomposition)
+    return jcall(obj, "getQT", RealMatrix, ())
 end
 
 function get_r(obj::QRDecomposition)
     return jcall(obj, "getR", RealMatrix, ())
 end
 
-function get_qt(obj::QRDecomposition)
-    return jcall(obj, "getQT", RealMatrix, ())
+function get_solver(obj::QRDecomposition)
+    return jcall(obj, "getSolver", DecompositionSolver, ())
 end
 

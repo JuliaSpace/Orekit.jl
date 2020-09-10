@@ -2,12 +2,12 @@ function InterpolationTableLoader()
     return InterpolationTableLoader(())
 end
 
-function get_ordinate_grid(obj::InterpolationTableLoader)
-    return jcall(obj, "getOrdinateGrid", Vector{jdouble}, ())
-end
-
 function get_abscissa_grid(obj::InterpolationTableLoader)
     return jcall(obj, "getAbscissaGrid", Vector{jdouble}, ())
+end
+
+function get_ordinate_grid(obj::InterpolationTableLoader)
+    return jcall(obj, "getOrdinateGrid", Vector{jdouble}, ())
 end
 
 function get_values_samples(obj::InterpolationTableLoader)

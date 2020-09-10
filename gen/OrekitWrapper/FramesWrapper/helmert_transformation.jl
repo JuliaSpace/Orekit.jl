@@ -2,15 +2,15 @@ function HelmertTransformation(arg0::AbsoluteDate, arg1::jdouble, arg10::jdouble
     return HelmertTransformation((AbsoluteDate, jdouble, jdouble, jdouble, jdouble, jdouble, jdouble, jdouble, jdouble, jdouble, jdouble, jdouble, jdouble), arg0, arg1, arg10, arg11, arg12, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
 end
 
+function get_epoch(obj::HelmertTransformation)
+    return jcall(obj, "getEpoch", AbsoluteDate, ())
+end
+
 function get_transform(obj::HelmertTransformation, arg0::AbsoluteDate)
     return jcall(obj, "getTransform", Transform, (AbsoluteDate,), arg0)
 end
 
 function get_transform(obj::HelmertTransformation, arg0::FieldAbsoluteDate)
     return jcall(obj, "getTransform", FieldTransform, (FieldAbsoluteDate,), arg0)
-end
-
-function get_epoch(obj::HelmertTransformation)
-    return jcall(obj, "getEpoch", AbsoluteDate, ())
 end
 

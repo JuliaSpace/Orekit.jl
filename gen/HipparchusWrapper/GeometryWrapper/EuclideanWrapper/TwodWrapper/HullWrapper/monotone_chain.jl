@@ -1,13 +1,13 @@
-function MonotoneChain(arg0::jboolean, arg1::jdouble)
-    return MonotoneChain((jboolean, jdouble), arg0, arg1)
+function MonotoneChain()
+    return MonotoneChain(())
 end
 
 function MonotoneChain(arg0::jboolean)
     return MonotoneChain((jboolean,), arg0)
 end
 
-function MonotoneChain()
-    return MonotoneChain(())
+function MonotoneChain(arg0::jboolean, arg1::jdouble)
+    return MonotoneChain((jboolean, jdouble), arg0, arg1)
 end
 
 function find_hull_vertices(obj::MonotoneChain, arg0::Collection)

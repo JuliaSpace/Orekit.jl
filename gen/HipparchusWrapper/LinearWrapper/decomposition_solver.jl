@@ -1,9 +1,9 @@
-function is_non_singular(obj::DecompositionSolver)
-    return jcall(obj, "isNonSingular", jboolean, ())
-end
-
 function get_inverse(obj::DecompositionSolver)
     return jcall(obj, "getInverse", RealMatrix, ())
+end
+
+function is_non_singular(obj::DecompositionSolver)
+    return jcall(obj, "isNonSingular", jboolean, ())
 end
 
 function solve(obj::DecompositionSolver, arg0::RealMatrix)

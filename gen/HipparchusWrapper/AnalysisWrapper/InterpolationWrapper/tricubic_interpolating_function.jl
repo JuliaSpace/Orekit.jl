@@ -2,11 +2,11 @@ function TricubicInterpolatingFunction(arg0::Vector{jdouble}, arg1::Vector{jdoub
     return TricubicInterpolatingFunction((Vector{jdouble}, Vector{jdouble}, Vector{Vector{jdouble}}, Vector{jdouble}, Vector{Vector{jdouble}}, Vector{Vector{jdouble}}, Vector{Vector{jdouble}}, Vector{Vector{jdouble}}, Vector{Vector{jdouble}}, Vector{Vector{jdouble}}, Vector{Vector{jdouble}}), arg0, arg1, arg10, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
 end
 
-function value(obj::TricubicInterpolatingFunction, arg0::jdouble, arg1::jdouble, arg2::jdouble)
-    return jcall(obj, "value", jdouble, (jdouble, jdouble, jdouble), arg0, arg1, arg2)
-end
-
 function is_valid_point(obj::TricubicInterpolatingFunction, arg0::jdouble, arg1::jdouble, arg2::jdouble)
     return jcall(obj, "isValidPoint", jboolean, (jdouble, jdouble, jdouble), arg0, arg1, arg2)
+end
+
+function value(obj::TricubicInterpolatingFunction, arg0::jdouble, arg1::jdouble, arg2::jdouble)
+    return jcall(obj, "value", jdouble, (jdouble, jdouble, jdouble), arg0, arg1, arg2)
 end
 

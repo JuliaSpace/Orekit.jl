@@ -6,11 +6,11 @@ function get_offset(obj::BoundaryProjection)
     return jcall(obj, "getOffset", jdouble, ())
 end
 
-function get_projected(obj::BoundaryProjection)
-    return jcall(obj, "getProjected", Point, ())
-end
-
 function get_original(obj::BoundaryProjection)
     return jcall(obj, "getOriginal", Point, ())
+end
+
+function get_projected(obj::BoundaryProjection)
+    return jcall(obj, "getProjected", Point, ())
 end
 

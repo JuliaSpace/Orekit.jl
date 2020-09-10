@@ -1,3 +1,7 @@
+function get_eop_history(obj::VersionedITRFProvider)
+    return jcall(obj, "getEOPHistory", EOPHistory, ())
+end
+
 function get_itrf_version(obj::VersionedITRFProvider)
     return jcall(obj, "getITRFVersion", ITRFVersion, ())
 end
@@ -12,9 +16,5 @@ end
 
 function get_transform(obj::VersionedITRFProvider, arg0::FieldAbsoluteDate)
     return jcall(obj, "getTransform", FieldTransform, (FieldAbsoluteDate,), arg0)
-end
-
-function get_eop_history(obj::VersionedITRFProvider)
-    return jcall(obj, "getEOPHistory", EOPHistory, ())
 end
 

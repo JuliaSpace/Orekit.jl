@@ -1,9 +1,9 @@
-function ElevationExtremumDetector(arg0::jdouble, arg1::jdouble, arg2::TopocentricFrame)
-    return ElevationExtremumDetector((jdouble, jdouble, TopocentricFrame), arg0, arg1, arg2)
-end
-
 function ElevationExtremumDetector(arg0::TopocentricFrame)
     return ElevationExtremumDetector((TopocentricFrame,), arg0)
+end
+
+function ElevationExtremumDetector(arg0::jdouble, arg1::jdouble, arg2::TopocentricFrame)
+    return ElevationExtremumDetector((jdouble, jdouble, TopocentricFrame), arg0, arg1, arg2)
 end
 
 function g(obj::ElevationExtremumDetector, arg0::SpacecraftState)

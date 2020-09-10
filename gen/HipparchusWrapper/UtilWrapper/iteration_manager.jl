@@ -6,10 +6,6 @@ function IterationManager(arg0::jint, arg1::Incrementor_MaxCountExceededCallback
     return IterationManager((jint, Incrementor_MaxCountExceededCallback), arg0, arg1)
 end
 
-function get_iterations(obj::IterationManager)
-    return jcall(obj, "getIterations", jint, ())
-end
-
 function add_iteration_listener(obj::IterationManager, arg0::IterationListener)
     return jcall(obj, "addIterationListener", void, (IterationListener,), arg0)
 end
@@ -28,6 +24,10 @@ end
 
 function fire_termination_event(obj::IterationManager, arg0::IterationEvent)
     return jcall(obj, "fireTerminationEvent", void, (IterationEvent,), arg0)
+end
+
+function get_iterations(obj::IterationManager)
+    return jcall(obj, "getIterations", jint, ())
 end
 
 function get_max_iterations(obj::IterationManager)

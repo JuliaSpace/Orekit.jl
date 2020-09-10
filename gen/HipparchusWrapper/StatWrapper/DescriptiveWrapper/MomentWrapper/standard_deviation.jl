@@ -1,11 +1,3 @@
-function StandardDeviation(arg0::StandardDeviation)
-    return StandardDeviation((StandardDeviation,), arg0)
-end
-
-function StandardDeviation(arg0::jboolean, arg1::SecondMoment)
-    return StandardDeviation((jboolean, SecondMoment), arg0, arg1)
-end
-
 function StandardDeviation()
     return StandardDeviation(())
 end
@@ -14,24 +6,24 @@ function StandardDeviation(arg0::SecondMoment)
     return StandardDeviation((SecondMoment,), arg0)
 end
 
+function StandardDeviation(arg0::StandardDeviation)
+    return StandardDeviation((StandardDeviation,), arg0)
+end
+
 function StandardDeviation(arg0::jboolean)
     return StandardDeviation((jboolean,), arg0)
+end
+
+function StandardDeviation(arg0::jboolean, arg1::SecondMoment)
+    return StandardDeviation((jboolean, SecondMoment), arg0, arg1)
 end
 
 function clear(obj::StandardDeviation)
     return jcall(obj, "clear", void, ())
 end
 
-function increment(obj::StandardDeviation, arg0::jdouble)
-    return jcall(obj, "increment", void, (jdouble,), arg0)
-end
-
 function copy(obj::StandardDeviation)
     return jcall(obj, "copy", StandardDeviation, ())
-end
-
-function get_result(obj::StandardDeviation)
-    return jcall(obj, "getResult", jdouble, ())
 end
 
 function evaluate(obj::StandardDeviation, arg0::Vector{jdouble}, arg1::jdouble)
@@ -48,6 +40,14 @@ end
 
 function get_n(obj::StandardDeviation)
     return jcall(obj, "getN", jlong, ())
+end
+
+function get_result(obj::StandardDeviation)
+    return jcall(obj, "getResult", jdouble, ())
+end
+
+function increment(obj::StandardDeviation, arg0::jdouble)
+    return jcall(obj, "increment", void, (jdouble,), arg0)
 end
 
 function is_bias_corrected(obj::StandardDeviation)

@@ -14,12 +14,12 @@ function get_last_observed_date(obj::CssiSpaceWeatherDataLoader)
     return jcall(obj, "getLastObservedDate", AbsoluteDate, ())
 end
 
-function get_min_date(obj::CssiSpaceWeatherDataLoader)
-    return jcall(obj, "getMinDate", AbsoluteDate, ())
-end
-
 function get_max_date(obj::CssiSpaceWeatherDataLoader)
     return jcall(obj, "getMaxDate", AbsoluteDate, ())
+end
+
+function get_min_date(obj::CssiSpaceWeatherDataLoader)
+    return jcall(obj, "getMinDate", AbsoluteDate, ())
 end
 
 function load_data(obj::CssiSpaceWeatherDataLoader, arg0::InputStream, arg1::JString)

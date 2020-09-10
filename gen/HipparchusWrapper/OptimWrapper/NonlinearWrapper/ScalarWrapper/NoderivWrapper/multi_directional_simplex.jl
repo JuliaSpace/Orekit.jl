@@ -1,17 +1,17 @@
-function MultiDirectionalSimplex(arg0::Vector{jdouble})
-    return MultiDirectionalSimplex((Vector{jdouble},), arg0)
-end
-
-function MultiDirectionalSimplex(arg0::Vector{jdouble}, arg1::jdouble, arg2::jdouble)
-    return MultiDirectionalSimplex((Vector{jdouble}, jdouble, jdouble), arg0, arg1, arg2)
-end
-
 function MultiDirectionalSimplex(arg0::Vector{Vector{jdouble}})
     return MultiDirectionalSimplex((Vector{Vector{jdouble}},), arg0)
 end
 
 function MultiDirectionalSimplex(arg0::Vector{Vector{jdouble}}, arg1::jdouble, arg2::jdouble)
     return MultiDirectionalSimplex((Vector{Vector{jdouble}}, jdouble, jdouble), arg0, arg1, arg2)
+end
+
+function MultiDirectionalSimplex(arg0::Vector{jdouble})
+    return MultiDirectionalSimplex((Vector{jdouble},), arg0)
+end
+
+function MultiDirectionalSimplex(arg0::Vector{jdouble}, arg1::jdouble, arg2::jdouble)
+    return MultiDirectionalSimplex((Vector{jdouble}, jdouble, jdouble), arg0, arg1, arg2)
 end
 
 function MultiDirectionalSimplex(arg0::jint)

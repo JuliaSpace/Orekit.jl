@@ -6,12 +6,12 @@ function SecondMoment(arg0::SecondMoment)
     return SecondMoment((SecondMoment,), arg0)
 end
 
-function clear(obj::SecondMoment)
-    return jcall(obj, "clear", void, ())
+function aggregate(obj::SecondMoment, arg0::SecondMoment)
+    return jcall(obj, "aggregate", void, (SecondMoment,), arg0)
 end
 
-function increment(obj::SecondMoment, arg0::jdouble)
-    return jcall(obj, "increment", void, (jdouble,), arg0)
+function clear(obj::SecondMoment)
+    return jcall(obj, "clear", void, ())
 end
 
 function copy(obj::SecondMoment)
@@ -22,7 +22,7 @@ function get_result(obj::SecondMoment)
     return jcall(obj, "getResult", jdouble, ())
 end
 
-function aggregate(obj::SecondMoment, arg0::SecondMoment)
-    return jcall(obj, "aggregate", void, (SecondMoment,), arg0)
+function increment(obj::SecondMoment, arg0::jdouble)
+    return jcall(obj, "increment", void, (jdouble,), arg0)
 end
 

@@ -2,11 +2,11 @@ function compute_parameter_jacobian(obj::NamedParameterJacobianProvider, arg0::j
     return jcall(obj, "computeParameterJacobian", Vector{jdouble}, (jdouble, Vector{jdouble}, Vector{jdouble}, JString), arg0, arg1, arg2, arg3)
 end
 
-function is_supported(obj::Parameterizable, arg0::JString)
-    return jcall(obj, "isSupported", jboolean, (JString,), arg0)
-end
-
 function get_parameters_names(obj::Parameterizable)
     return jcall(obj, "getParametersNames", List, ())
+end
+
+function is_supported(obj::Parameterizable, arg0::JString)
+    return jcall(obj, "isSupported", jboolean, (JString,), arg0)
 end
 

@@ -1,9 +1,9 @@
-function is_non_singular(obj::FieldDecompositionSolver)
-    return jcall(obj, "isNonSingular", jboolean, ())
-end
-
 function get_inverse(obj::FieldDecompositionSolver)
     return jcall(obj, "getInverse", FieldMatrix, ())
+end
+
+function is_non_singular(obj::FieldDecompositionSolver)
+    return jcall(obj, "isNonSingular", jboolean, ())
 end
 
 function solve(obj::FieldDecompositionSolver, arg0::FieldMatrix)
