@@ -1,0 +1,8 @@
+function ClassicalRungeKuttaIntegratorBuilder(arg0::jdouble)
+    return ClassicalRungeKuttaIntegratorBuilder((jdouble,), arg0)
+end
+
+function build_integrator(obj::ClassicalRungeKuttaIntegratorBuilder, arg0::Orbit, arg1::OrbitType)
+    return jcall(obj, "buildIntegrator", AbstractIntegrator, (Orbit, OrbitType), arg0, arg1)
+end
+

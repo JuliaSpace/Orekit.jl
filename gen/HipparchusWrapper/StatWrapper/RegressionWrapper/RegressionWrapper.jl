@@ -1,0 +1,94 @@
+module RegressionWrapper
+
+using JavaCall
+
+const AbstractMultipleLinearRegression = @jimport org.hipparchus.stat.regression.AbstractMultipleLinearRegression
+const Class = @jimport java.lang.Class
+const GLSMultipleLinearRegression = @jimport org.hipparchus.stat.regression.GLSMultipleLinearRegression
+const JString = @jimport java.lang.String
+const MillerUpdatingRegression = @jimport org.hipparchus.stat.regression.MillerUpdatingRegression
+const MultipleLinearRegression = @jimport org.hipparchus.stat.regression.MultipleLinearRegression
+const OLSMultipleLinearRegression = @jimport org.hipparchus.stat.regression.OLSMultipleLinearRegression
+const Object = @jimport java.lang.Object
+const RealMatrix = @jimport org.hipparchus.linear.RealMatrix
+const RegressionResults = @jimport org.hipparchus.stat.regression.RegressionResults
+const SimpleRegression = @jimport org.hipparchus.stat.regression.SimpleRegression
+const UpdatingMultipleLinearRegression = @jimport org.hipparchus.stat.regression.UpdatingMultipleLinearRegression
+
+export AbstractMultipleLinearRegression
+export GLSMultipleLinearRegression
+export MillerUpdatingRegression
+export MultipleLinearRegression
+export OLSMultipleLinearRegression
+export RegressionResults
+export SimpleRegression
+export UpdatingMultipleLinearRegression
+export add_data
+export add_observation
+export add_observations
+export append
+export calculate_adjusted_r_squared
+export calculate_hat
+export calculate_r_squared
+export calculate_residual_sum_of_squares
+export calculate_total_sum_of_squares
+export clear
+export equals
+export estimate_error_variance
+export estimate_regressand_variance
+export estimate_regression_parameters
+export estimate_regression_parameters_standard_errors
+export estimate_regression_parameters_variance
+export estimate_regression_standard_error
+export estimate_residuals
+export get_adjusted_r_squared
+export get_class
+export get_covariance_of_parameters
+export get_diagonal_of_hat_matrix
+export get_error_sum_squares
+export get_intercept
+export get_intercept_std_err
+export get_mean_square_error
+export get_n
+export get_number_of_parameters
+export get_order_of_regressors
+export get_parameter_estimate
+export get_parameter_estimates
+export get_partial_correlations
+export get_r
+export get_r_square
+export get_r_squared
+export get_regression_sum_squares
+export get_significance
+export get_slope
+export get_slope_confidence_interval
+export get_slope_std_err
+export get_std_error_of_estimate
+export get_std_error_of_estimates
+export get_sum_of_cross_products
+export get_sum_squared_errors
+export get_total_sum_squares
+export get_x_sum_squares
+export has_intercept
+export hash_code
+export is_no_intercept
+export new_sample_data
+export notify
+export notify_all
+export predict
+export regress
+export remove_data
+export set_no_intercept
+export to_string
+export wait
+
+include("abstract_multiple_linear_regression.jl")
+include("gls_multiple_linear_regression.jl")
+include("miller_updating_regression.jl")
+include("multiple_linear_regression.jl")
+include("ols_multiple_linear_regression.jl")
+include("regression_results.jl")
+include("simple_regression.jl")
+include("updating_multiple_linear_regression.jl")
+
+end

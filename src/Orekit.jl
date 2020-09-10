@@ -3,11 +3,8 @@ module Orekit
 import Dates
 using Pkg.Artifacts
 
-import AstroTime
 using JavaCall
 using Reexport
-
-@reexport using AstroTime.TimeScales
 
 export AbsoluteDate, DateTimeComponents, TimeScale
 
@@ -16,6 +13,7 @@ function init()
     JavaCall.init()
 end
 
-include("time.jl")
+include(joinpath(@__DIR__, "..", "gen", "OrekitWrapper", "OrekitWrapper.jl"))
+include(joinpath(@__DIR__, "..", "gen", "HipparchusWrapper", "HipparchusWrapper.jl"))
 
 end # module
