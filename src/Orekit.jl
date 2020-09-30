@@ -16,4 +16,6 @@ end
 include(joinpath(@__DIR__, "..", "gen", "OrekitWrapper", "OrekitWrapper.jl"))
 include(joinpath(@__DIR__, "..", "gen", "HipparchusWrapper", "HipparchusWrapper.jl"))
 
+include("time.jl")
+
 end # module
