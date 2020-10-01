@@ -7,6 +7,7 @@ Orekit.init()
 
 @testset "Orekit" begin
     @testset "Time" begin
+        TAI = get_tai()
         dt = Dates.DateTime(2020, 1, 1, 0, 0, 12, 500)
         ep1 = AbsoluteDate(2020, 1, 1, 0, 0, 12.5, TAI)
         ep2 = AbsoluteDate(dt, TAI)

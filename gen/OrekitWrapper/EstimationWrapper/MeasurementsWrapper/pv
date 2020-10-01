@@ -1,0 +1,36 @@
+function PV(arg0::AbsoluteDate, arg1::Vector3D, arg2::Vector3D, arg3::Vector{Vector{jdouble}}, arg4::Vector{Vector{jdouble}}, arg5::jdouble, arg6::ObservableSatellite)
+    return PV((AbsoluteDate, Vector3D, Vector3D, Vector{Vector{jdouble}}, Vector{Vector{jdouble}}, jdouble, ObservableSatellite), arg0, arg1, arg2, arg3, arg4, arg5, arg6)
+end
+
+function PV(arg0::AbsoluteDate, arg1::Vector3D, arg2::Vector3D, arg3::Vector{Vector{jdouble}}, arg4::jdouble, arg5::ObservableSatellite)
+    return PV((AbsoluteDate, Vector3D, Vector3D, Vector{Vector{jdouble}}, jdouble, ObservableSatellite), arg0, arg1, arg2, arg3, arg4, arg5)
+end
+
+function PV(arg0::AbsoluteDate, arg1::Vector3D, arg2::Vector3D, arg3::Vector{jdouble}, arg4::Vector{jdouble}, arg5::jdouble, arg6::ObservableSatellite)
+    return PV((AbsoluteDate, Vector3D, Vector3D, Vector{jdouble}, Vector{jdouble}, jdouble, ObservableSatellite), arg0, arg1, arg2, arg3, arg4, arg5, arg6)
+end
+
+function PV(arg0::AbsoluteDate, arg1::Vector3D, arg2::Vector3D, arg3::Vector{jdouble}, arg4::jdouble, arg5::ObservableSatellite)
+    return PV((AbsoluteDate, Vector3D, Vector3D, Vector{jdouble}, jdouble, ObservableSatellite), arg0, arg1, arg2, arg3, arg4, arg5)
+end
+
+function PV(arg0::AbsoluteDate, arg1::Vector3D, arg2::Vector3D, arg3::jdouble, arg4::jdouble, arg5::jdouble, arg6::ObservableSatellite)
+    return PV((AbsoluteDate, Vector3D, Vector3D, jdouble, jdouble, jdouble, ObservableSatellite), arg0, arg1, arg2, arg3, arg4, arg5, arg6)
+end
+
+function get_correlation_coefficients_matrix(obj::PV)
+    return jcall(obj, "getCorrelationCoefficientsMatrix", Vector{Vector{jdouble}}, ())
+end
+
+function get_covariance_matrix(obj::PV)
+    return jcall(obj, "getCovarianceMatrix", Vector{Vector{jdouble}}, ())
+end
+
+function get_position(obj::PV)
+    return jcall(obj, "getPosition", Vector3D, ())
+end
+
+function get_velocity(obj::PV)
+    return jcall(obj, "getVelocity", Vector3D, ())
+end
+
